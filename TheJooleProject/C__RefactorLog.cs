@@ -12,13 +12,8 @@ namespace TheJooleProject
     using System;
     using System.Collections.Generic;
     
-    public partial class PropertyValue
+    public partial class C__RefactorLog
     {
-        public int PropertyID { get; set; }
-        public int ProductID { get; set; }
-        public Nullable<double> Value { get; set; }
-    
-        public virtual Product Product { get; set; }
-        public virtual Property Property { get; set; }
+        public System.Guid OperationKey { get; set; }
     }
 }

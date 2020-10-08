@@ -21,14 +21,14 @@ namespace TheJooleProject
         }
     
         public int ProductID { get; set; }
-        public int Manufacturer_ID { get; set; }
+        public int ManufacturerID { get; set; }
         public int SubCategoryID { get; set; }
-        public string ProductName { get; set; }
-        public byte[] ProductImage { get; set; }
+        public string Product_Name { get; set; }
+        public byte[] Product_image { get; set; }
         public string Series { get; set; }
         public string Model { get; set; }
-        public int Model_Year { get; set; }
-        public string Series_Info { get; set; }
+        public Nullable<int> Model_Year { get; set; }
+        public string Series_info { get; set; }
         public string Featured { get; set; }
     
         public virtual Manufacturer Manufacturer { get; set; }

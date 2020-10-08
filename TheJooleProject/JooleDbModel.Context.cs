@@ -13,10 +13,10 @@ namespace TheJooleProject
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TheJooleProjectEntities : DbContext
+    public partial class JooleDatabaseEntities : DbContext
     {
-        public TheJooleProjectEntities()
-            : base("name=TheJooleProjectEntities")
+        public JooleDatabaseEntities()
+            : base("name=JooleDatabaseEntities")
         {
         }
     
@@ -25,6 +25,7 @@ namespace TheJooleProject
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Consumer> Consumers { get; set; }
         public virtual DbSet<Manufacturer> Manufacturers { get; set; }

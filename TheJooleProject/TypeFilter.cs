@@ -17,7 +17,6 @@ namespace TheJooleProject
         public int SubCategoryID { get; set; }
         public int PropertyID { get; set; }
         public string Type_Name { get; set; }
-        public string Type_Options { get; set; }
     
         public virtual Property Property { get; set; }
         public virtual SubCategory SubCategory { get; set; }

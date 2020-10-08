@@ -15,9 +15,9 @@ namespace TheJooleProject
     public partial class Consumer
     {
         public int ConsumerID { get; set; }
-        public string ConsumerName { get; set; }
+        public string Consumer_Name { get; set; }
         public string Email { get; set; }
-        public byte[] ConsumerImage { get; set; }
+        public byte[] Consumer_image { get; set; }
         public string Password { get; set; }
     }
 }

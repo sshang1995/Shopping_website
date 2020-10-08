@@ -25,7 +25,7 @@ namespace TheJooleProject
         public int PropertyID { get; set; }
         public string PropertyName { get; set; }
         public int IsType { get; set; }
-        public int isTechSpec { get; set; }
+        public int IsTechSpec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PropertyValue> PropertyValues { get; set; }
