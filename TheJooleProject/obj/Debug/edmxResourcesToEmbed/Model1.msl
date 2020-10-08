@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TheJooleProjectModelStoreContainer" CdmEntityContainer="TheJooleProjectEntities">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consumers">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.Consumer">
+        <MappingFragment StoreEntitySet="Consumer">
+          <ScalarProperty Name="ConsumerID" ColumnName="ConsumerID" />
+          <ScalarProperty Name="ConsumerName" ColumnName="ConsumerName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ConsumerImage" ColumnName="ConsumerImage" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Manufacturers">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.Manufacturer">
+        <MappingFragment StoreEntitySet="Manufacturer">
+          <ScalarProperty Name="Manufacturer_ID" ColumnName="Manufacturer_ID" />
+          <ScalarProperty Name="Manufacturer_Name" ColumnName="Manufacturer_Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.Product">
+        <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Manufacturer_ID" ColumnName="Manufacturer_ID" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="Series" ColumnName="Series" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Model_Year" ColumnName="Model_Year" />
+          <ScalarProperty Name="Series_Info" ColumnName="Series_Info" />
+          <ScalarProperty Name="Featured" ColumnName="Featured" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Properties">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.Property">
+        <MappingFragment StoreEntitySet="Property">
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="PropertyName" ColumnName="PropertyName" />
+          <ScalarProperty Name="IsType" ColumnName="IsType" />
+          <ScalarProperty Name="isTechSpec" ColumnName="isTechSpec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubCategories">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.SubCategory">
+        <MappingFragment StoreEntitySet="SubCategory">
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="SubCategoryName" ColumnName="SubCategoryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PropertyValues">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.PropertyValue">
+        <MappingFragment StoreEntitySet="PropertyValue">
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TechSpecFilters">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.TechSpecFilter">
+        <MappingFragment StoreEntitySet="TechSpecFilter">
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="Min_Value" ColumnName="Min_Value" />
+          <ScalarProperty Name="Max_Value" ColumnName="Max_Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeFilters">
+      <EntityTypeMapping TypeName="TheJooleProjectModel.TypeFilter">
+        <MappingFragment StoreEntitySet="TypeFilter">
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
+          <ScalarProperty Name="Type_Name" ColumnName="Type_Name" />
+          <ScalarProperty Name="Type_Options" ColumnName="Type_Options" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,274 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TheJooleProjectModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryID" />
+    </Key>
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="CategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Consumer">
+    <Key>
+      <PropertyRef Name="ConsumerID" />
+    </Key>
+    <Property Name="ConsumerID" Type="int" Nullable="false" />
+    <Property Name="ConsumerName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ConsumerImage" Type="varbinary(max)" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Manufacturer">
+    <Key>
+      <PropertyRef Name="Manufacturer_ID" />
+    </Key>
+    <Property Name="Manufacturer_ID" Type="int" Nullable="false" />
+    <Property Name="Manufacturer_Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Manufacturer_ID" Type="int" Nullable="false" />
+    <Property Name="SubCategoryID" Type="int" Nullable="false" />
+    <Property Name="ProductName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ProductImage" Type="varbinary(max)" Nullable="false" />
+    <Property Name="Series" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Model_Year" Type="int" Nullable="false" />
+    <Property Name="Series_Info" Type="varchar" MaxLength="50" />
+    <Property Name="Featured" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Property">
+    <Key>
+      <PropertyRef Name="PropertyID" />
+    </Key>
+    <Property Name="PropertyID" Type="int" Nullable="false" />
+    <Property Name="PropertyName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="IsType" Type="int" Nullable="false" />
+    <Property Name="isTechSpec" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TheJooleProject.dbo.PropertyValue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="PropertyValue">
+    <Key>
+      <PropertyRef Name="PropertyID" />
+      <PropertyRef Name="ProductID" />
+      <PropertyRef Name="Value" />
+    </Key>
+    <Property Name="PropertyID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Value" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubCategory">
+    <Key>
+      <PropertyRef Name="SubCategoryID" />
+    </Key>
+    <Property Name="SubCategoryID" Type="int" Nullable="false" />
+    <Property Name="CategoryID" Type="int" Nullable="false" />
+    <Property Name="SubCategoryName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TheJooleProject.dbo.TechSpecFilter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TechSpecFilter">
+    <Key>
+      <PropertyRef Name="PropertyID" />
+      <PropertyRef Name="SubCategoryID" />
+      <PropertyRef Name="Min_Value" />
+      <PropertyRef Name="Max_Value" />
+    </Key>
+    <Property Name="PropertyID" Type="int" Nullable="false" />
+    <Property Name="SubCategoryID" Type="int" Nullable="false" />
+    <Property Name="Min_Value" Type="int" Nullable="false" />
+    <Property Name="Max_Value" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TheJooleProject.dbo.TypeFilter' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TypeFilter">
+    <Key>
+      <PropertyRef Name="SubCategoryID" />
+      <PropertyRef Name="PropertyID" />
+      <PropertyRef Name="Type_Name" />
+      <PropertyRef Name="Type_Options" />
+    </Key>
+    <Property Name="SubCategoryID" Type="int" Nullable="false" />
+    <Property Name="PropertyID" Type="int" Nullable="false" />
+    <Property Name="Type_Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Type_Options" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Product_Manufacturer">
+    <End Role="Manufacturer" Type="Self.Manufacturer" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Manufacturer">
+        <PropertyRef Name="Manufacturer_ID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Manufacturer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_SubCategory">
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyValue_Product">
+    <End Role="Product" Type="Self.Product" Multiplicity="1" />
+    <End Role="PropertyValue" Type="Self.PropertyValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="PropertyValue">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PropertyValue_Property">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="PropertyValue" Type="Self.PropertyValue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="PropertyID" />
+      </Principal>
+      <Dependent Role="PropertyValue">
+        <PropertyRef Name="PropertyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubCategory_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="1" />
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryID" />
+      </Principal>
+      <Dependent Role="SubCategory">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechSpecFilter_Property">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="TechSpecFilter" Type="Self.TechSpecFilter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="PropertyID" />
+      </Principal>
+      <Dependent Role="TechSpecFilter">
+        <PropertyRef Name="PropertyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TechSpecFilter_SubCategory">
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+    <End Role="TechSpecFilter" Type="Self.TechSpecFilter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="TechSpecFilter">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TypeFilter_Property">
+    <End Role="Property" Type="Self.Property" Multiplicity="1" />
+    <End Role="TypeFilter" Type="Self.TypeFilter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Property">
+        <PropertyRef Name="PropertyID" />
+      </Principal>
+      <Dependent Role="TypeFilter">
+        <PropertyRef Name="PropertyID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TypeFilter_SubCategory">
+    <End Role="SubCategory" Type="Self.SubCategory" Multiplicity="1" />
+    <End Role="TypeFilter" Type="Self.TypeFilter" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubCategory">
+        <PropertyRef Name="SubCategoryID" />
+      </Principal>
+      <Dependent Role="TypeFilter">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TheJooleProjectModelStoreContainer">
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consumer" EntityType="Self.Consumer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Manufacturer" EntityType="Self.Manufacturer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubCategory" EntityType="Self.SubCategory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PropertyValue" EntityType="Self.PropertyValue" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [PropertyValue].[PropertyID] AS [PropertyID], 
+    [PropertyValue].[ProductID] AS [ProductID], 
+    [PropertyValue].[Value] AS [Value]
+    FROM [dbo].[PropertyValue] AS [PropertyValue]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TechSpecFilter" EntityType="Self.TechSpecFilter" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TechSpecFilter].[PropertyID] AS [PropertyID], 
+    [TechSpecFilter].[SubCategoryID] AS [SubCategoryID], 
+    [TechSpecFilter].[Min_Value] AS [Min_Value], 
+    [TechSpecFilter].[Max_Value] AS [Max_Value]
+    FROM [dbo].[TechSpecFilter] AS [TechSpecFilter]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TypeFilter" EntityType="Self.TypeFilter" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TypeFilter].[SubCategoryID] AS [SubCategoryID], 
+    [TypeFilter].[PropertyID] AS [PropertyID], 
+    [TypeFilter].[Type_Name] AS [Type_Name], 
+    [TypeFilter].[Type_Options] AS [Type_Options]
+    FROM [dbo].[TypeFilter] AS [TypeFilter]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Product_Manufacturer" Association="Self.FK_Product_Manufacturer">
+      <End Role="Manufacturer" EntitySet="Manufacturer" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_SubCategory" Association="Self.FK_Product_SubCategory">
+      <End Role="SubCategory" EntitySet="SubCategory" />
+      <End Role="Product" EntitySet="Product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyValue_Product" Association="Self.FK_PropertyValue_Product">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="PropertyValue" EntitySet="PropertyValue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PropertyValue_Property" Association="Self.FK_PropertyValue_Property">
+      <End Role="Property" EntitySet="Property" />
+      <End Role="PropertyValue" EntitySet="PropertyValue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubCategory_Category" Association="Self.FK_SubCategory_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="SubCategory" EntitySet="SubCategory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechSpecFilter_Property" Association="Self.FK_TechSpecFilter_Property">
+      <End Role="Property" EntitySet="Property" />
+      <End Role="TechSpecFilter" EntitySet="TechSpecFilter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TechSpecFilter_SubCategory" Association="Self.FK_TechSpecFilter_SubCategory">
+      <End Role="SubCategory" EntitySet="SubCategory" />
+      <End Role="TechSpecFilter" EntitySet="TechSpecFilter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeFilter_Property" Association="Self.FK_TypeFilter_Property">
+      <End Role="Property" EntitySet="Property" />
+      <End Role="TypeFilter" EntitySet="TypeFilter" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TypeFilter_SubCategory" Association="Self.FK_TypeFilter_SubCategory">
+      <End Role="SubCategory" EntitySet="SubCategory" />
+      <End Role="TypeFilter" EntitySet="TypeFilter" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
