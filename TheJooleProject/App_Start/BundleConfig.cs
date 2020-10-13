@@ -25,6 +25,14 @@ namespace TheJooleProject
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/Content/TheJooleProject/Search").Include(
+                "~/Content/TheJooleProject/Search/Search.css")
+                );
+
+            bundles.Add(new StyleBundle("~/Content/TheJooleProject/ProductSummary").Include(
+                "~/Content/TheJooleProject/Search/ProductSummary.css")
+                );
         }
     }
 }
