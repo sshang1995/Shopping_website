@@ -1,0 +1,241 @@
+﻿
+@{
+    ViewBag.Title = "ProductSummary";
+}
+
+@model TheJooleProject.Models.ProductSummaryViewModel
+@*<h2>Search</h2>*@
+
+@*<div class="category">
+
+
+    </div>*@
+@Styles.Render("~/Content/TheJooleProject/ProductSummary")
+<div class="d-inline-flex p-2">
+
+    <div class="container d-flex h-100">
+
+        <div class="row justify-content-center align-self-center">
+
+
+
+            <div class="btn-group">
+
+
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="categoryMenuBtn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Category
+                </button>
+                <div class="dropdown-menu" aria-labelledby="categoryMenuBtn" id="categoriesDropDown">
+                    @*<a class="dropdown-item" href="#" data-selected="true" hidden> All </a>*@
+                    @{
+
+
+                        foreach (var item in Model.c)
+                        {
+                            <a class="dropdown-item" href="#" data-selected="false" value="@item.CategoryName">@item.CategoryName</a>
+                        }
+                    }
+                </div>
+
+
+            </div>
+            <div class="btn-group">
+
+
+                @*
+
+                    <input type="text" id="subCategoriesInput" name="scInput" list="scInputList">
+                    <datalist id="scInputList">
+                        <option value="">
+
+                            </datalist>
+                        <input type="button" name="button" value="Search" src="~/Images/bundle-icon-search-blue-search-button.jpg" class="imgBtnSearch" />
+
+
+                *@
+
+                <form class="form-inline my-2 my-lg-0" id="search">
+                    <input name="SubCategory" list="subCategories" class="form-control mr-sm-2" type="text" aria-label="Search" id="searchInput">
+
+                    <datalist id="subCategories">
+                        @{
+                            foreach (var val in Model.t)
+                            {
+                                <option value="@val.c2.SubCategory_Name" class="@val.c1.CategoryName"></option>
+                            }
+                        }
+                    </datalist>
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+</div>
+
+<div class="filterContainerFather">
+    <div class="filterContainer">
+
+        <div id="searchRow" class="divider">
+            <span id="searchSpan">
+                Search:
+            </span>
+            
+            <span>
+                <button class="searchBtn">Save</button>
+
+                <button class="searchBtn">Clear</button>
+            </span>
+            
+
+        </div>
+
+        
+
+        <div class="divider productRow">
+
+            <span>Product</span>
+
+            <div class="verticalDivider"></div>
+
+            <span>Project</span>
+        </div>
+
+        <div class="divider">
+            <span>Product Type</span>
+
+            <span>
+                <select name="productType" id="productType">
+                    @*<option value="volvo">Volvo</option>*@
+
+                </select>
+            </span>
+
+        </div>
+
+        <div class="divider">
+            <span>Model Year: </span>
+
+            <input class="modelYearInput" type="number" />
+
+            -
+
+            <input class="modelYearInput" type="number" />
+
+        </div>
+
+        <div>
+
+            Technical Specifications
+
+            <div class="drop">
+
+                @{
+                    foreach (var item in Model.combo.sjtn)
+                    {
+                        <div>
+                            <div data-propertyID="@item.p.PropertyID">@item.p.PropertyName</div>
+                            <div>
+
+                                <input type="range" id="volume" name="volume"
+                                       min="@item.sjt.t.Min_Value" max="@item.sjt.t.Max_Value">
+                            </div>
+
+                        </div>
+                    }
+
+
+
+                }
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="ProductArea">
+        <div>
+
+
+
+        </div>
+        <div class="ProductContainer">
+            @{
+                foreach (var item in Model.combo.sjpv)
+                {
+                        <div class="Product" data-modelYear="@item.sjp.prod.Model_Year">
+                            @*<img src='<%= Url.Action( "show", "image", new { id = ViewData["imageID"] } ) %>' />*@
+
+                            <img src="~/Search/Image/@item.sjp.prod.ProductID" />
+                            <div class="ProdcutImage"></div>
+                            <b>
+                                @item.sjp.prod.Product_Name<br />
+                                @item.sjp.prod.Series <br />
+                                @item.sjp.prod.Model <br />
+                            </b>
+                            <br />
+                            @{
+                                foreach (var e in item.pvJp)
+                                {
+                                    <div data-propertyID="@e.prop.PropertyID" data-propertyValue="@e.propertyValue.Value">
+                                        <span> @e.propertyValue.Value  </span> <span> at </span> <span> @e.prop.PropertyName</span>
+                                    </div>
+
+                                }
+                            }
+
+                            <div class="compareAddTo">
+                                <input type="checkbox" id="compare" name="compare"> Compare
+                                <button type="button" class="btn-primary">Add To</button>
+                            </div>
+                        </div>
+
+                    
+                }
+            }
+
+
+        </div>
+    </div>
+</div>
+
+
+@*<input type="button" name="button" value="Search" onclick="showUser()" class="button" />*@
+
+
+<script>
+    // var subCategoryList = @Model.
+    // var subCategory = $("a[data-selected='true']").next().attr("value");
+
+    var disableAllSubCatOptions = function () {
+        $("#subCategories").children("option").each(function () { $(this).prop("disabled", true) });
+
+    }
+    // disableAllSubCatOptions();
+
+    $("#categoriesDropDown").on("click", "a", function (event) {
+        disableAllSubCatOptions();
+        // while($("#subCategories option"))
+        let c = $(event.target).attr("value");
+        $(`.${c}`).prop("disabled", false);
+    });
+
+    $("#search").submit(function (event) {
+        console.log($("#searchInput").val());
+        console.log($("#search").serializeArray());
+        $(this).attr("method", "POST");
+        $(this).attr("action", "https://" + window.location.host + "/Search/ProductSummary");
+        console.log($(this).attr("action"));
+        // event.preventDefault();
+    });
+
+
+
+</script>
+
