@@ -1,23 +1,15 @@
-﻿
-/*body {
-    display: flex;
-    justify-content: center;
+﻿body {
+    background: linear-gradient(DeepSkyBlue,white) no-repeat center center fixed !important;
+    text-align: center;
+    background-size: cover;
 }
-#searchBox {
-    width: 800px;
-    margin: 0 auto;
-   
-}*/
-/*body, html {
-    height: 100%;
-    display: grid;
-}*/
+#jooleImage{
+    margin-top: 100px;
+}
+.btn {
+    background-color: Highlight;
+}
 
-/*#searchBox { 
-      margin: 0;
-      position: absolute;
-      top: 50%;
-      -ms-transform: translateY(-50%);
-      transform: translateY(-50%);
-
-}*/
+#searchInput{
+    width: 400px;
+}
