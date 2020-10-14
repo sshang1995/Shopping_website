@@ -1,3 +1,19 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var controller = HttpContext.Current.Request.RequestContext
+                     .RouteData.Values["Controller"].ToString();
+
+    switch (controller)
+    {
+        case "Search":
+            Layout = "~/Views/Shared/_SearchLayout.cshtml";
+            break;
+
+        default:
+            Layout = "~/Views/Shared/_Layout.cshtml";
+            break;
+    }
+
+
+
 }
