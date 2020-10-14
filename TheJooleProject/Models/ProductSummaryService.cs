@@ -4,7 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.CompilerServices;
 using System.Web;
-using TheJooleProject.DAL;
 using Joole.Data;
 namespace TheJooleProject.Models
 {

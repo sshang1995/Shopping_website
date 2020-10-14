@@ -67,7 +67,7 @@ namespace TheJooleProject.Models
             public IEnumerable<TF> tf { get; set; }
         }
 
-        public List<DAL.SearchViewModel.SubCategoryJoinCategory> t { get; set; }
+        public List<SearchViewModel.SubCategoryJoinCategory> t { get; set; }
 
         public List<Category> c { get; set; }
 

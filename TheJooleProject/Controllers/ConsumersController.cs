@@ -34,7 +34,7 @@ namespace TheJooleProject.Controllers
                 if (db.Consumers.Any(x => (x.Consumer_Name == user.Consumer_Name || x.Email == user.Consumer_Name) && x.Password == user.Password))
                 { 
                     ViewBag.SuccessMessage = "Login Success!";
-                    return View("Login", user);
+                    return RedirectToAction("Search","Search");
 
 
                 }

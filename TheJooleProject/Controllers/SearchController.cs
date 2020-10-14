@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Xml.Linq;
-using TheJooleProject.DAL;
+using TheJooleProject.Models;
 using TheJooleProject.Models;
 using Joole.Data;
 namespace TheJooleProject.Controllers

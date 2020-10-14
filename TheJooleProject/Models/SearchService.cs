@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Joole.Data;
-namespace TheJooleProject.DAL
+namespace TheJooleProject.Models
 {
     public class SearchService
     {

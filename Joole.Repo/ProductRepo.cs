@@ -14,7 +14,7 @@ namespace Joole.Repo
 
         public override IEnumerable<Product> GetAll()
         {
-            return entities.Include("Manufacturer").Include("SubCategory").Include("PropertyValue");
+            return entities.Include("Manufacturer").Include("SubCategory").Include("PropertyValues");
 
         }
     }

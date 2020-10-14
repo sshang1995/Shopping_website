@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Joole.Data;
 
-namespace TheJooleProject.DAL
+namespace TheJooleProject.Models
 {
     
     public class SearchViewModel
