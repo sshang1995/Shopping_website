@@ -1,0 +1,137 @@
+﻿body {
+}
+#header {
+    background-image: linear-gradient(#053354, white);
+    z-index:1;
+}
+.filterContainer {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid darkgrey;
+    margin-right: 5px;
+    padding: 5px;
+    background:#f8f7f7;
+}
+
+.drop{
+    display: flex;
+    flex-direction: column;
+}
+.filterContainerFather{
+    margin-top: 60px;
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.Product{
+    min-width: 200px;
+    min-height:400px;
+    width: auto;
+    height: auto;
+    border: 1px solid darkgray;
+    margin-right:20px;
+    padding: 4px;
+    text-align: center;
+    
+}
+
+.ProductImage{
+    width:inherit;
+    height:inherit;
+    border: 5px solid red;
+}
+.ProductContainer{
+    display:grid;
+    grid-template-columns: auto auto auto;
+}
+
+.modelYearInput{
+    width:100px;
+}
+
+.searchBtn {
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #0fd4f7;
+
+    
+}
+
+#searchSpan{
+    margin-left:20px;
+    margin-right: 20px;
+    padding: 8px 15px;
+    
+    text-align:center;
+}
+
+#searchRow{
+    display: flex;
+    justify-content: space-between;
+}
+
+.productRow{
+    display:flex;
+    text-align:center;
+    justify-content:space-around;
+}
+
+.divider {
+    width:inherit !important;
+    border-bottom: 1px solid darkgray;
+}
+
+.filterContainer div{
+    margin: 2px;
+}
+
+.verticalDivider {
+    width: 1px;
+    margin: 1px 0;
+    background: darkgray;
+    height:inherit;
+}
+
+.compareAddTo{
+    display: flex;
+    justify-content: space-between;
+}
+
+#jooleImage {
+    margin-top: 100px;
+}
+
+.btn {
+    background-color: Highlight;
+}
+
+#searchInput {
+    width: 250px;
+}
+
+.productType, .technicalSpecifications{
+    display:flex;
+    justify-content: space-between;
+}
+
+.modelYear{
+    padding-bottom: 2px;
+}
+
+.prodImage{
+    width: 180px;
+    height: 150px;
+}
+
+.minmaxFilter{
+    display:flex;
+    justify-content:space-evenly;
+}

@@ -212,12 +212,17 @@
     <Compile Include="Controllers\ConsumersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ConsumerVM.cs" />
     <Compile Include="Models\ProductDetailsVM.cs" />
+    <Compile Include="Models\ProductSummaryService.cs" />
+    <Compile Include="Models\ProductSummaryViewModel.cs" />
     <Compile Include="Models\PropertyVM.cs" />
+    <Compile Include="Models\SearchService.cs" />
+    <Compile Include="Models\SearchViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -227,8 +232,12 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\iconmonstr-arrow-80.svg" />
+    <Content Include="Content\Images\Joole.png" />
     <Content Include="Content\pics\Joole.png" />
     <Content Include="Content\styles\styles.css" />
+    <Content Include="Content\TheJooleProject\Search\ProductSummary.css" />
+    <Content Include="Content\TheJooleProject\Search\Search.css" />
     <Content Include="CSS\Login.css" />
     <Content Include="CSS\signup.css" />
     <Content Include="favicon.ico" />
@@ -377,6 +386,9 @@
     <Content Include="Views\Consumers\Index.cshtml" />
     <Content Include="Views\Consumers\Login.cshtml" />
     <Content Include="Views\Consumers\SignupPage.cshtml" />
+    <Content Include="Views\Shared\_SearchLayout.cshtml" />
+    <Content Include="Views\Search\ProductSummary.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
