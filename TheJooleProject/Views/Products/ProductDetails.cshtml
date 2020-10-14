@@ -1,0 +1,99 @@
+﻿@model TheJooleProject.Models.ProductDetailsVM
+@{
+    ViewBag.Title = "ProductDetails";
+}
+<div class="container bg-light my-1">
+    <a href="#" class="text-info my-3 mx-2">Product Summary</a>
+    <a href="#" class="text-info my-3 mx-2">Product Details</a>
+    <a href="#" class="text-info my-3 mx-2">Product Documentation</a>
+    <a href="#" class="text-info my-3 mx-2">Contact</a>
+</div>
+<div class="container mt-4">
+    <div class="row">
+        <h3 class="text-info">Product Details</h3>
+    </div>
+    <div class="row">
+        @*left side part*@
+        <div class="col-sm d-block">
+            @*description part*@
+            <div class="d-block pb-3 border-top border-bottom">
+                <label for="desc">Description</label>
+                <form id="desc">
+                    <div class="form-group row">
+                        <label for="Manu" class="col-5 col-form-label-sm ">
+                            Manufacture
+                        </label>
+                        <div class="col-7  border-top">
+                            <input type="text" class="form-control-plaintext form-control-sm" id="Manu" value="@Model.ManufactureName" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="series" class="col-5 col-form-label-sm">
+                            Series
+                        </label>
+                        <div class="col-7  border-top">
+                            <input type="text" class="form-control-plaintext form-control-sm" id="series" value="@Model.Series" />
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="model" class="col-5 col-form-label-sm">
+                            Model
+                        </label>
+                        <div class="col-7  border-top border-bottom">
+                            <input type="text" class="form-control-plaintext form-control-sm" id="model" value="@Model.Model" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            @*TYPE part*@
+            <div class="d-block pb-3 border-top border-bottom">
+                <label for="type">TYPE</label>
+                <form id="type">
+                    @foreach (var item in Model.Type_Property) 
+                    { 
+                        <div class="form-group row">
+                            <label for="@item.PropertyName" class="col-5 col-form-label-sm">
+                                @item.PropertyName
+                            </label>
+                            <div class="col-7 border-top">
+                                <input type="text" class="form-control-plaintext form-control-sm" id="@item.PropertyName" value="@item.PropertyValue" />
+                            </div>
+                        </div>
+                    }
+                    <div class="form-group row">
+                        <label for="model_year" class="col-5 col-form-label-sm">
+                            Model Year
+                        </label>
+                        <div class="col-7 border-top border-bottom">
+                            <input type="text" class="form-control-plaintext form-control-sm" id="model_year" value="@Model.Model_Year" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @*right side part*@
+        <div class="col-sm d-block">
+            <div class="d-block pb-3 border-top border-bottom">
+                <label for="tech">TECHNICAL SPECIFICATIONS</label>
+                <form id="tech">
+                    @foreach (var item in Model.Spec_Property)
+                    {
+                        <div class="form-group row">
+                            <label for="@item.PropertyName" class="col-5 col-form-label-sm">
+                                @item.PropertyName
+                            </label>
+                            <div class="col-7 border-top">
+                                <input type="text" class="form-control-plaintext form-control-sm" id="@item.PropertyName" value="@item.PropertyValue" />
+                            </div>
+                        </div>
+                    }
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+

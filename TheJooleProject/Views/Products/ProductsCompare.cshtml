@@ -1,0 +1,114 @@
+﻿
+@{
+    ViewBag.Title = "ProductsCompare";
+    List<TheJooleProject.Models.ProductDetailsVM> array = ViewBag.Model;
+    int count = array.Count + 1;
+}
+<div class="container bg-light my-1">
+    <a href="#" class="text-info my-3">Category ></a>
+    <a href="#" class="text-info my-3">Subcategory ></a>
+    <a href="#" class="text-info my-3">Compare</a>
+</div>
+<div class="container mt-4">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th scope="col" id="empty"></th>
+                @foreach (TheJooleProject.Models.ProductDetailsVM item in array)
+                {
+                    <th scope="col" class="text-center">
+                        @{ var base64 = Convert.ToBase64String(item.Product_image);
+                            var imgSrc = String.Format("data:image/gif;base64,{0}", base64);
+                        }
+                        <img src="@imgSrc" width="100" height="100" />
+                    </th>
+
+                            }
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td colspan='@count'>DESCRIPTION</td>
+            </tr>
+            <tr>
+                <td scope="row">Manufacture</td>
+
+                @foreach (var item in array)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ManufactureName)
+                    </td>
+                }
+
+            </tr>
+            <tr>
+                <td scope="row">Series</td>
+
+                @foreach (var item in array)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Series)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td scope="row">Model</td>
+                @foreach (var item in array)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td colspan='@count'>TYPE</td>
+            </tr>
+            @foreach (TheJooleProject.Models.PropertyVM property in array[0].Type_Property)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(modelItem => property.PropertyName)</td>
+                    <td>@Html.DisplayFor(modelItem => property.PropertyValue)</td>
+                    @for (int i = 1; i < count - 1; i++)
+                    {
+                        foreach (var curr_item in array[i].Type_Property)
+                        {
+                            if (curr_item.PropertyName == property.PropertyName)
+                            {
+                                <td>@Html.DisplayFor(modelItem => curr_item.PropertyValue)</td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+            <tr>
+                <td scope="row">Model_Year</td>
+                @foreach (var item in array)
+                {
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Model_Year)
+                    </td>
+                }
+            </tr>
+            <tr>
+                <td colspan="4">TECHNICAL SPECIFICATION</td>
+            </tr>
+            @foreach (TheJooleProject.Models.PropertyVM property in array[0].Spec_Property)
+            {
+                <tr>
+                    <td scope="row">@Html.DisplayFor(modelItem => property.PropertyName)</td>
+                    <td>@Html.DisplayFor(modelItem => property.PropertyValue)</td>
+                    @for (int i = 1; i < count - 1; i++)
+                    {
+                        foreach (var curr_item in array[i].Spec_Property)
+                        {
+                            if (curr_item.PropertyName == property.PropertyName)
+                            {
+                                <td>@Html.DisplayFor(modelItem => curr_item.PropertyValue)</td>
+                            }
+                        }
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

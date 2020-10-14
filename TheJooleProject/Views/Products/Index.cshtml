@@ -1,0 +1,147 @@
+﻿@model IEnumerable<TheJooleProject.Models.ProductDetailsVM>
+
+@{ ViewBag.Title = "Index"; }
+
+<h2>Index</h2>
+
+<p>
+    <a href="javascript:void(0)" id="compare">Compare</a>
+   
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Compare
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product_image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ManufactureName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Series)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model_Year)
+        </th>
+    </tr>
+
+    @foreach (var item in Model.Take(10))
+    {
+<tr>
+    <td>
+        <div class="form-check">
+            <input class="form-check-input position-static" type="checkbox" id="@item.ProductID" value="@item.ProductID" aria-label="...">
+        </div>
+    </td>
+
+
+    <td>
+        @*@Html.DisplayFor(modelItem => item.Product_image)*@
+        @{ var base64 = Convert.ToBase64String(item.Product_image);
+            var imgSrc = String.Format("data:image/gif;base64,{0}", base64); }
+        <img src="@imgSrc" width="50" height="50" />
+
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ManufactureName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Series)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Model_Year)
+    </td>
+
+    @foreach (var pv in item.Type_Property)
+    {
+<td>
+    @Html.DisplayFor(modelItem => pv.PropertyName)
+</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => pv.PropertyValue)
+                    </td>
+}
+    @foreach (var pv in item.Spec_Property)
+    {
+<td>
+    @Html.DisplayFor(modelItem => pv.PropertyName)
+</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => pv.PropertyValue)
+                    </td>
+}
+    <td>
+        @Html.ActionLink("Details", "ProductDetails", new { id = item.ProductID })
+    </td>
+    @*
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+        </td>*@
+</tr>}
+
+</table>
+@section scripts {
+
+    <script type="text/javascript">
+
+
+        var compList = []
+        $(document).ready(function () {
+            // Handler for .ready() called.
+            //clean the compare list
+            compList = []
+            //unchecked all checkbox
+            $("input[type='checkbox']").prop('checked', false);
+            $("input[type='checkbox']").change(addToCompare);
+            $("a#compare").click(MoveToCompare);
+        });
+        function MoveToCompare() {
+            console.log("click Compare");
+            var n = compList.length;
+            var params = `?id1=${n > 0 ? compList[0] : -1}&id2=${n > 1 ? compList[1] : -1}&id3=${n > 2 ? compList[2] : -1}`;
+            console.log(params)
+            window.location.href = '@Url.Action("ProductsCompare", "Products")' + params;
+
+            //$.ajax({
+            //    url: '',
+            //    data: { ids: compList },
+            //    success: function (data) {
+            //        alert(data);
+
+            //    }
+            //});
+        }
+        function addToCompare() {
+            if (this.checked) {
+                if (compList.length >= 3) {
+                    var checkid = compList.shift()
+                    $('#' + checkid).prop('checked', false)
+                }
+                compList.push($(this).prop('id'));
+            }
+            else {
+                var index = 0;
+                var checkid = $(this).prop('id');
+                for (let i = 0; i < compList.length; i++) {
+                    if (compList[i] == checkid) {
+                        index = i;
+                    }
+                }
+                compList.splice(index, 1)
+            }
+            console.log(compList)
+        }
+
+    </script>
+
+}

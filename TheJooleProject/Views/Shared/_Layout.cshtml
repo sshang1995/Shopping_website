@@ -4,47 +4,47 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Scripts.Render("~/bundles/jquery")
-
     @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/bootstrap")
-    @*<script src="Scripts/jquery-2.1.1.js"></script>
-    <script src="Scripts/bootstrap.js"></script>
-    <script src="Scripts/bootstrap.min.js"></script>*@
-    @*@Scripts.Render("~/bundles/modernizr")*@
-
+    @Styles.Render("~/Content/styles/styles.css")
+    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    @*<div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+    <div class="d-inline-block">
+        <nav class="navbar fixed-top navbar-dark" id="header">
+            <a class="narbar-brand my-2" href="#">
+                <img src="~/Content/pics/Joole.png" width="100" height="40" alt="" />
+            </a>
+            <div class="mx-auto">
+                <form class="form-inline">
+                    <label class="sr-only" for="inlineFormCustomSelectPref">Preference</label>
+                    <select class="custom-select my-2 mr-sm-0 bg-primary text-light" id="inlineFormCustomSelectPref">
+                        <option selected>Category</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0 bg-primary text-light" type="submit">
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                            <path fill-rule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+                        </svg>
                     </button>
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                </div>
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                        <li>@Html.ActionLink("About", "About", "Home")</li>
-                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    </ul>
-                </div>
+                </form>
             </div>
-        </div>*@
+        </nav>
+    </div>
 
-    @RenderBody()
-    @*<div class="container body-content">
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
 
-            <hr />
-            <footer>
-                <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-            </footer>
-        </div>*@
-    
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

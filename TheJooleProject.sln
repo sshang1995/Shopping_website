@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joole.Data", "Joole.Data\Joole.Data.csproj", "{42D40838-A459-4DC9-8656-9DD7071CE210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joole.Service", "Joole.Service\Joole.Service.csproj", "{428B1F2C-6A40-4752-91D1-630C356D8996}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Joole.Repo", "Joole.Repo\Joole.Repo.csproj", "{5C6F4058-9E7C-4ED0-BB7B-9A6B49D481C3}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TheJooleProject", "TheJooleProject\TheJooleProject.csproj", "{ED473AF2-8881-4AC3-8E54-1EEB7178332C}"
 EndProject
 Global
@@ -11,6 +17,18 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{42D40838-A459-4DC9-8656-9DD7071CE210}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42D40838-A459-4DC9-8656-9DD7071CE210}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42D40838-A459-4DC9-8656-9DD7071CE210}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42D40838-A459-4DC9-8656-9DD7071CE210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{428B1F2C-6A40-4752-91D1-630C356D8996}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{428B1F2C-6A40-4752-91D1-630C356D8996}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{428B1F2C-6A40-4752-91D1-630C356D8996}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{428B1F2C-6A40-4752-91D1-630C356D8996}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C6F4058-9E7C-4ED0-BB7B-9A6B49D481C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C6F4058-9E7C-4ED0-BB7B-9A6B49D481C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C6F4058-9E7C-4ED0-BB7B-9A6B49D481C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C6F4058-9E7C-4ED0-BB7B-9A6B49D481C3}.Release|Any CPU.Build.0 = Release|Any CPU
 		{ED473AF2-8881-4AC3-8E54-1EEB7178332C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ED473AF2-8881-4AC3-8E54-1EEB7178332C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ED473AF2-8881-4AC3-8E54-1EEB7178332C}.Release|Any CPU.ActiveCfg = Release|Any CPU

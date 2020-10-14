@@ -1,0 +1,49 @@
+﻿
+body {
+    background: linear-gradient(DeepSkyBlue,white) no-repeat center center fixed;
+    text-align: center;
+    background-size: cover;
+    
+}
+
+#signup {
+    position: absolute;
+    top: 20px;
+    right: 1px;
+    color: black;
+    font-size: 18px;
+}
+
+.form-horizontal {
+    /*display: inline-block;
+    margin-left: auto;
+    margin-right: auto;*/
+    width: 500px;
+    /* box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);*/
+    /* background: #fff;
+    padding: 20px;*/
+    margin: 0% auto 0;
+    /*text-align: center;*/
+}
+
+
+#textUser, #textPassword {
+    width: 100%;
+    /* padding:12px 20px;*/
+    margin: 8px 0;
+    display: inline-block;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+#login {
+    position: relative;
+    left: 200px;
+    background-color: Highlight;
+    border: none;
+    color: white;
+    padding:1px,17px,1px,17px;
+    width:75px;
+}

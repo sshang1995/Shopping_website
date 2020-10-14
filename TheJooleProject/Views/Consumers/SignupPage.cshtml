@@ -1,0 +1,141 @@
+﻿@model Joole.Data.Consumer
+
+@{
+    ViewBag.Title = "SignupPage";
+    Layout = null;
+}
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet" href="~/CSS/signup.css" />
+
+
+<div id="login" class="col-md-4">
+    @Html.ActionLink("Login", "Login", "Consumers")
+</div>
+
+@using (Html.BeginForm("SignupPage", "Consumers", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Register as User</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <p><b>Image Preview </b></p>
+            <br />
+            <img id="viewimg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Circle_Grey_Solid.svg/1024px-Circle_Grey_Solid.svg.png" alt="your image" />
+            <br />
+        </div>
+        <div class="form-group">
+            <p><b>Your Profile Pic </b></p>
+            @*@Html.LabelFor(model => model.Consumer_image, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <br />
+            <div class="col-md-10">
+                <input name="file" type="file" id="imgInp" accept="image/*" />
+                @* @Html.EditorFor(model => model.Consumer_image, new { htmlAttributes = new { id="imgInp", @class = "form-control" } })*@
+                @*@Html.ValidationMessageFor(model => model.Consumer_image, "", new { @class = "text-danger" })*@
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Consumer_Name, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Consumer_Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Consumer_Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "control-label col-md-4" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <hr />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Sign Up" id="signupbtn" class="btn btn-default" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <label class="text-success">@ViewBag.SuccessMessage</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <label class="text-danger">@ViewBag.DuplicateMessage</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <label class="text-danger">@ViewBag.ErrorMessage</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-5">
+                <label class="text-danger">@ViewBag.Message</label>
+            </div>
+        </div>
+    </div>
+}
+
+
+<script>
+    $(document).ready(function () {
+
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#viewimg').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]); // convert to base64 string
+            }
+        }
+
+        $("#imgInp").change(function () {
+            readURL(this);
+        });
+
+        //$("#signupbtn").click(function () {
+        //    var user = new FormData();
+        //    var image = $("#imgInp").get(0).files;
+        //    var ajaxRequest = $.ajax({
+        //        type: "POST",
+        //        url: "/Login/SignupPage",
+        //        data: user,
+        //        success: function (result) {
+        //            alert(result);
+
+        //        }
+        //    });
+        //});
+
+    });
+</script>

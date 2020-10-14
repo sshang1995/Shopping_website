@@ -1,0 +1,50 @@
+﻿
+body {
+    background: linear-gradient(DeepSkyBlue,white) no-repeat center center fixed;
+    background-size: cover;
+}
+
+#login {
+    position:absolute;
+    top:20px;
+    right: 1px;
+    color: black;
+    font-size: 18px;
+}
+/*Sign up style*/
+.form-horizontal {
+    width: 550px;
+    box-shadow: 0 0 3px 0 rgba(0,0,0,0.3);
+    background: #fff;
+    padding: 20px;
+    margin: 8% auto 0;
+    /*text-align: center;*/
+}
+
+
+img {
+    display: block;
+    margin: 0 auto 0;
+}
+
+#imgInp {
+    position: relative;
+    left: 145px;
+}
+
+p {
+    text-align: center;
+}
+
+#viewimg {
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+}
+
+#signupbtn {
+    background-color: Highlight;
+    color: white;
+    position: relative;
+    left: 280px;
+}
