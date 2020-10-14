@@ -79,7 +79,13 @@ namespace TheJooleProject.Models
             var sjpJOINporpJoinVal = sjp.GroupJoin(propJoinVal, x => x.prod.ProductID, y => y.propertyValue.ProductID, (x, y) => new ProductSummaryViewModel.SJPJoinPropertyAndValue {sjp=x, pvJp=y }).ToList();
 
 
-            return new ProductSummaryViewModel.Combo { sjtn = sjtnList, sjpv=sjpJOINporpJoinVal };
+
+
+            var typefilter = jdbContext.TypeFilters.Where(tf => tf.SubCategoryID == id).Select(tf => new ProductSummaryViewModel.TF { typename=tf.Type_Name }).ToList().Distinct();
+
+            var propValJointf = jdbContext.PropertyValues.Join(jdbContext.TypeFilters, pv => pv.PropertyID, tf => tf.PropertyID, (pv, tf) => new { propVal=pv, typeFilter=tf });
+
+            return new ProductSummaryViewModel.Combo { sjtn = sjtnList, sjpv=sjpJOINporpJoinVal, tf=typefilter };
 
 
             //var val =  jdbContext.SubCategories.Join(jdbContext.TechSpecFilters, s => s.SubCategoryID, t => t.SubCategoryID, (s, t) => new ProductSummaryViewModel.SubCategoryJoinTechSpec { sc = s, t = t }).Where(e => e.sc.SubCategoryID == Int32.Parse(id)).ToList();

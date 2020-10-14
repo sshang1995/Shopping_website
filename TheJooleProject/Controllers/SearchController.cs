@@ -38,34 +38,29 @@ namespace TheJooleProject.Controllers
 
             
 
-            string[] keys = Request.Form.AllKeys;
-            for (int i = 0; i < keys.Length; i++)
-            {
-                Response.Write(keys[i] + ": " + Request.Form[keys[i]] + "<br>");
-                var key = keys[i];
-                var val = Request.Form[keys[i]];
-            }
+            //string[] keys = Request.Form.AllKeys;
+            //for (int i = 0; i < keys.Length; i++)
+            //{
+            //    Response.Write(keys[i] + ": " + Request.Form[keys[i]] + "<br>");
+            //    var key = keys[i];
+            //    var val = Request.Form[keys[i]];
+            //}
             using (var db = new JooleDatabaseEntities())
             {
                 var searchService = new ProductSummaryService(db);
                 //var productSummaryVM = new ProductSummaryViewModel();
                 searchService.LoadVM(ref psvm);
-
-                
-                //var query = db.Categories.ToList();
-
-
-                //searchService.LoadVM(ref productSummaryVM);
-                //return View("ProductSummary", productSummaryVM);
-
-
                 return View("ProductSummary", psvm);
             }
 
         }
 
-        public ActionResult Image(int productID)
+        public ActionResult Image()
         {
+
+            string url = Request.Url.ToString();
+            string id = url.Split('/').Last();
+            int productID = Int32.Parse(id);
             using(var db=new JooleDatabaseEntities())
             {
                 var imageData = db.Products.Where(x => x.ProductID == productID).Select(p => p.Product_image).Single();

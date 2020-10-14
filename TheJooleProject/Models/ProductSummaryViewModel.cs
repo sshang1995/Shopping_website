@@ -43,13 +43,17 @@ namespace TheJooleProject.Models
             
         }
 
-        public class ProductJoinSubCategoryAndName
+        
+        //public class ProductJoinSubCategoryAndName
+        //{
+        //    public Product prod { get; set; }
+
+        //    public IEnumerable<SubCategoryJoinTechSpecWithName> sjtn { get; set; }
+        //}
+        public class TF
         {
-            public Product prod { get; set; }
-
-            public IEnumerable<SubCategoryJoinTechSpecWithName> sjtn { get; set; }
+            public string typename { get; set; }
         }
-
         
         public class Combo
         {
@@ -58,6 +62,8 @@ namespace TheJooleProject.Models
             //public List<ProductJoinSubCategoryAndName> psjtn { get; set; }
 
             public List<SJPJoinPropertyAndValue> sjpv { get; set; }
+
+            public IEnumerable<TF> tf { get; set; }
         }
 
         public List<DAL.SearchViewModel.SubCategoryJoinCategory> t { get; set; }
