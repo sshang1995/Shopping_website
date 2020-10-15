@@ -135,3 +135,11 @@
     display:flex;
     justify-content:space-evenly;
 }
+.linkToCategory {
+    color: black;
+    margin: 4px;
+}
+
+.linkArea {
+    margin: 4px;
+}

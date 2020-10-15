@@ -191,8 +191,21 @@
     </div>
 
     <div id="ProductArea">
-        <div>
-
+        <div class="linkArea">
+            @{
+                var categoryName = "";
+                foreach (var c in Model.c)
+                {
+                    foreach (var item in Model.combo.sjpv)
+                    {
+                        if (item.sjp.sc.CategoryID == c.CategoryID)
+                        {
+                            categoryName = c.CategoryName;
+                        }
+                    }
+                }
+                <b><a href="#" class="linkToCategory">@categoryName &gt; </a></b> @Model.SubCategory
+            }
 
 
         </div>
