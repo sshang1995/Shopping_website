@@ -22,32 +22,27 @@
     <div class="form-horizontal">
 
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
+        <div class="form-group row justify-content-md-center">
             <div class="col-md-10">
 
-                @Html.EditorFor(model => model.Consumer_Name, new { htmlAttributes = new { placeholder = "UserName or Email", id = "textUser", @class = "form-control" } })
+                @Html.EditorFor(model => model.Consumer_Name, new { htmlAttributes = new { placeholder = "UserName or Email", id = "textUser", @class = "form-control form-control-sm" } })
+                
                 <br />
                 @Html.ValidationMessageFor(model => model.Consumer_Name, "", new { @class = "text-danger" })
-                <br />
+
                 @* @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })*@
 
-                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password", id = "textPassword", @class = "form-control" } })
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { placeholder = "Password", id = "textPassword", @class = "form-control form-control-sm" } })
                 <br />
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-                <br />
+
                 <label class="text-danger"> @Html.DisplayFor(model => model.LoginErrorMessage) </label>
-            </div>          
+            </div>
             <label class="text-success">@ViewBag.SuccessMessage</label>
 
-        </div>
-        @*<input type="text" id="textUser" placeholder="Username or Email" required />
-            <br />
-            <input type="text" id="textPassword" placeholder="Password" required />
-            <br />*@
-        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" id="login" value="Log In" />
-            </div>
+            <input type="submit" id="login" value="Log In" />
+        </div>
         </div>
 
     </div>

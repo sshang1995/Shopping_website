@@ -389,6 +389,7 @@
     <Content Include="Views\Shared\_SearchLayout.cshtml" />
     <Content Include="Views\Search\ProductSummary.cshtml" />
     <Content Include="Views\Search\Search.cshtml" />
+    <Content Include="Views\Shared\_ProductLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
