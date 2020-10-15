@@ -1,4 +1,5 @@
 ﻿body {
+    height:100vh;
 }
 #header {
     background-image: linear-gradient(#053354, white);
@@ -10,7 +11,10 @@
     border: 1px solid darkgrey;
     margin-right: 5px;
     padding: 5px;
-    background:#f8f7f7;
+    background: #f8f7f7;
+    height: -moz-max-content; /* Firefox/Gecko */
+    height: -webkit-max-content; /* Chrome */
+    height: max-content;
 }
 
 .drop{
@@ -24,16 +28,17 @@
     
 }
 
-.Product{
+.Product {
     min-width: 200px;
-    min-height:400px;
+    min-height: 400px;
     width: auto;
     height: auto;
     border: 1px solid darkgray;
-    margin-right:20px;
+    margin-right: 20px;
     padding: 4px;
     text-align: center;
-    
+    display: flex;
+    flex-direction: column;
 }
 
 .ProductImage{
@@ -100,9 +105,12 @@
     height:inherit;
 }
 
-.compareAddTo{
-    display: flex;
+.compareAddTo {
+    margin-top: auto;
+    display: inline-flex;
     justify-content: space-between;
+    /*display: flex;
+    justify-content: space-between;*/
 }
 
 #jooleImage {

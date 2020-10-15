@@ -229,7 +229,7 @@
                         @{
                             foreach (var e in item.pvJp)
                             {
-                                <div class="propIDAndValue" data-propID="@e.prop.PropertyID" data-propertyValue="@e.propertyValue.Value">
+                                <div class="propIDAndValue" data-propID="@e.propertyValue.PropertyID" data-propertyValue="@e.propertyValue.Value">
                                     <span> @e.propertyValue.Value  </span> <span> at </span> <span> @e.prop.PropertyName</span>
                                 </div>
 
@@ -237,8 +237,8 @@
                         }
 
                         <div class="compareAddTo">
-                            <input type="checkbox" id="@item.sjp.prod.ProductID" name="compare"> Compare
-                            <button type="button" class="btn-primary">Add To</button>
+                            <span><input type="checkbox" id="compare" name="compare"> Compare</span>
+                            <button type="button" class="btn btn-primary">Add To</button>
                         </div>
                     </div>
 
@@ -360,7 +360,7 @@
                 }
                 var propElements = $(this).children(".propIDAndValue");
                 for (var elem of propElements) {
-                    if (filter.prop[$(elem).attr("data-propID")] > $(elem).attr("data-propertyValue")) {
+                    if (filter.prop[$(elem).attr("data-propID")] < $(elem).attr("data-propertyValue")) {
                         $(this).attr("hidden", true);
                     }
                 }
