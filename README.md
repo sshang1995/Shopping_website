@@ -2,6 +2,7 @@
 Created a shopping website which include Login, Signup, Search product, compare product and product detail Pages.
 Team size: 3 (Shu, Niraj, Yu)
 
+![Database ER diagram](https://github.com/sshang1995/Shopping_website/blob/merged_login_and_product_detail/ER%20diagram.png)
 Technology and Methods: 
 1. Using Onion Architecture to seperate the UI, business logic and Data Access into different layers. 
 2. Using EntityFramework- Database First Approach to build database in SQL server. 
